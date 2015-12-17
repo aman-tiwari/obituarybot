@@ -75,6 +75,7 @@ def get_poem(names):
         first = first.replace(' is ', ' was ')
         poem =  first + "\n" + unparse(rhymes[0]) + "\n" + "They died"
         poem = re.sub('\(([^)]+)\)', '', poem)
+        poem = re.sub(' +', ' ', poem)
         if len(poem) <= 140:
             return poem
         elif len(poem) <= 149:
