@@ -94,8 +94,12 @@ api  = twitter.Api(consumer_key='',
 
 def post_tweet(tweet):
     print tweet
-    status = api.PostUpdate(tweet)
-    print status
+    try:
+        status = api.PostUpdate(tweet)
+        print status
+    except twitter.error.TwitterError:
+        print twitter.error.TwitterError
+        pass
 
 def create_obit(possible_people):
     return get_poem(possible_people)
