@@ -60,7 +60,7 @@ def get_poem(names):
     for name in names:
         try:
             text = w.page(name).content
-        except w.exceptions.PageError:
+        except (w.exceptions.PageError, w.exceptions.DisambiguationError):
             continue
         raw_sentences = nltk.sent_tokenize(text)
         sentences = preprocess_sentences(raw_sentences)
